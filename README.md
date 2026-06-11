@@ -1,31 +1,31 @@
 # hhan593
 
-**前端工程师** / 专注于 React、Vue 和 Node.js 技术栈
+**Frontend Engineer** / Focused on React, Vue, and Node.js stack
 
-## 正在做什么
+## What I'm Working On
 
-- 探索 AI 与前端开发的结合点
-- 构建实用的开发工具和效率提升方案
-- 学习 Rust 以拓展系统级编程能力
+- Exploring the intersection of AI and frontend development
+- Building practical developer tools and productivity solutions
+- Expanding system-level programming skills with Rust
 
-## 精选作品
+## Featured Projects
 
 ### [claude-code](https://github.com/hhan593/claude-code)
-独立 Python 功能移植版 Claude Code，完全从零重写。教育目的。
+Independent Python feature port of Claude Code, entirely rewritten from scratch. Educational purpose.
 
 ### [SwarmDrop](https://github.com/hhan593/SwarmDrop)
-分布式文件传输工具，基于 TypeScript 构建。
+Distributed file transfer tool built with TypeScript.
 
 ### [rust](https://github.com/hhan593/rust)
-Rust 系统编程实践与探索，从所有权模型到并发安全。
+Rust systems programming practice and exploration, from ownership models to concurrency safety.
 
 ### [Synapse-AI](https://github.com/hhan593/Synapse-AI)
-AI 驱动的智能助手项目。
+AI-powered intelligent assistant project.
 
 ### [omniAI](https://github.com/hhan593/omniAI)
-全栈 AI 应用开发框架。
+Full-stack AI application development framework.
 
-## 技术栈
+## Tech Stack
 
 <div align="center">
 
@@ -38,7 +38,7 @@ AI 驱动的智能助手项目。
 
 </div>
 
-## 统计
+## Stats
 
 <div align="center">
 
@@ -46,12 +46,12 @@ AI 驱动的智能助手项目。
 
 </div>
 
-## 联系方式
+## Contact
 
 - GitHub: [@hhan593](https://github.com/hhan593)
 
 ---
 
 <div align="center">
-<i>最后更新: 2026年6月11日</i>
+<i>Last updated: June 11, 2026</i>
 </div>
