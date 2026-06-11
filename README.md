@@ -8,23 +8,6 @@
 - Building practical developer tools and productivity solutions
 - Expanding system-level programming skills with Rust
 
-## Featured Projects
-
-### [claude-code](https://github.com/hhan593/claude-code)
-Independent Python feature port of Claude Code, entirely rewritten from scratch. Educational purpose.
-
-### [SwarmDrop](https://github.com/hhan593/SwarmDrop)
-Distributed file transfer tool built with TypeScript.
-
-### [rust](https://github.com/hhan593/rust)
-Rust systems programming practice and exploration, from ownership models to concurrency safety.
-
-### [Synapse-AI](https://github.com/hhan593/Synapse-AI)
-AI-powered intelligent assistant project.
-
-### [omniAI](https://github.com/hhan593/omniAI)
-Full-stack AI application development framework.
-
 ## Tech Stack
 
 <div align="center">
