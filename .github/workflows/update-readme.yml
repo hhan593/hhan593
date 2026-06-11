@@ -1,0 +1,79 @@
+name: Update README
+
+on:
+  schedule:
+    # 每天 UTC 时间 00:00 运行（北京时间 08:00）
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update last updated date
+        run: |
+          # 获取当前日期（北京时间）
+          DATE=$(TZ='Asia/Shanghai' date '+%Y年%m月%d日')
+          # 替换 README 中的日期
+          sed -i "s/最后更新: .*<\/i>/最后更新: ${DATE}<\/i>/" README.md
+
+      - name: Get recent activity
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: events } = await github.rest.activity.listPublicEventsForUser({
+              username: 'hhan593',
+              per_page: 5
+            });
+
+            const recentActivity = events
+              .filter(event => ['PushEvent', 'CreateEvent', 'ReleaseEvent'].includes(event.type))
+              .slice(0, 3)
+              .map(event => {
+                if (event.type === 'PushEvent') {
+                  return `- 推送了 ${event.payload.commits?.length || 0} 个提交到 [${event.repo.name}](https://github.com/${event.repo.name})`;
+                } else if (event.type === 'CreateEvent') {
+                  return `- 创建了仓库 [${event.repo.name}](https://github.com/${event.repo.name})`;
+                } else if (event.type === 'ReleaseEvent') {
+                  return `- 发布了 [${event.payload.release.tag_name}](${event.payload.release.html_url})`;
+                }
+                return null;
+              })
+              .filter(Boolean);
+
+            if (recentActivity.length > 0) {
+              const fs = require('fs');
+              let readme = fs.readFileSync('README.md', 'utf8');
+
+              // 添加最近活动部分（如果不存在）
+              const activitySection = `## 最近活动\n\n${recentActivity.join('\n')}\n`;
+
+              if (!readme.includes('## 最近活动')) {
+                // 在"正在做什么"部分之后添加
+                readme = readme.replace(
+                  /## 精选作品/,
+                  `${activitySection}\n## 精选作品`
+                );
+              } else {
+                // 替换现有的最近活动部分
+                readme = readme.replace(
+                  /## 最近活动\n\n[\s\S]*?\n\n## 精选作品/,
+                  `${activitySection}\n## 精选作品`
+                );
+              }
+
+              fs.writeFileSync('README.md', readme);
+            }
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git diff --staged --quiet || git commit -m "Update README with latest activity"
+          git push
